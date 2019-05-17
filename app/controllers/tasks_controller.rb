@@ -1,5 +1,10 @@
 class TasksController < ApplicationController
-  before_action :set_restaurant, only: %i[show create edit update destroy]
+  before_action :set_task, only: %i[new show create edit update destroy]
+
+  def set_task
+    @task = Task.find(params['id'])
+  end
+
   def index
     @tasks = Task.all
   end
@@ -29,11 +34,8 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  private
 
-  def find_task
-    @task = Task.find(params['id'])
-  end
+  private
 
   def task_params
     params.require(:task).permit(:title, :details, :completed)
