@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[new show create edit update destroy]
+  before_action :set_task, only: %i[show edit update destroy]
 
   def set_task
     @task = Task.find(params['id'])
